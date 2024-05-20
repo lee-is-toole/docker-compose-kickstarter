@@ -39,7 +39,7 @@ services:
         aliases:
           - ngrok
     ports:
-      - 4040:4040
+      - ${EXT_PORT_NGROK:-4040}:4040
 
   prestashop-mysql:
     image: mariadb:${DOCKER_MARIADB_VERSION:-10.8}
@@ -81,6 +81,7 @@ services:
 
 networks:
   prestashop:
+    name: ${DOCKER_NETWORK_NAME:-ps_network}
 
 volumes:
   ps-modules:
