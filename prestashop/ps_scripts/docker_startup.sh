@@ -10,7 +10,9 @@ export MODULE_DIR="${MODULE_DIR:-/var/www/html/modules}"
 
 # POST-INSTALL scripts
 mkdir -p /tmp/init-scripts/
-cp ./install_modules.sh /tmp/init-scripts/1-install_modules.sh
+cp ./init-scripts/activate_debug_mode.sh /tmp/init-scripts/1-activate_debug_mode.sh
+cp ./init-scripts/install_modules.sh /tmp/init-scripts/2-install_modules.sh
+chmod +x /tmp/init-scripts/*.sh
 
 # Assert the ownership
 chown -R www-data:www-data ${PS_DIR}
