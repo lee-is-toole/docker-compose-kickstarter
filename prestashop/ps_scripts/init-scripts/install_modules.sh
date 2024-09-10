@@ -20,3 +20,7 @@ for file in $(ls "${MODULES_TO_INSTALL}"/*.zip); do
   unzip -qq ${file} -d ${MODULE_DIR}
   php $INSTALL_COMMAND ${module}
 done;
+
+# If there is module to install after init PS, the files under `var/log` or `var/cache` will be under root
+echo "--> Recover the PS dir ownership"
+chown -R www-data:www-data ${PS_DIR}
