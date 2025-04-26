@@ -1,5 +1,6 @@
 services:
   prestashop:
+    platform: linux/amd64
     image: prestashop/prestashop:${DOCKER_PRESTASHOP_VERSION:-8.0.0-apache}
     env_file:
       - ./prestashop/prestashop.env
@@ -25,6 +26,7 @@ services:
       - ${EXT_PORT_PRESTASHOP:-8000}:80
 
   prestashop-ngrok:
+    platform: linux/amd64
     image: ngrok/ngrok:${DOCKER_NGROK_VERSION:-alpine}
     environment:
       - NGROK_CONFIG=/etc/ngrok.yml
@@ -46,6 +48,7 @@ services:
       - ${EXT_PORT_NGROK:-4040}:4040
 
   prestashop-mysql:
+    platform: linux/amd64
     image: mariadb:${DOCKER_MARIADB_VERSION:-10.8}
     env_file:
       - ./mysql/mysql.env
@@ -71,6 +74,7 @@ services:
       - 3306
 
   prestashop-phpmyadmin:
+    platform: linux/amd64
     image: phpmyadmin:latest
     env_file:
       - ./phpmyadmin/phpmyadmin.env
