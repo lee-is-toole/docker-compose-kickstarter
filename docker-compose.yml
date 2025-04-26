@@ -36,7 +36,7 @@ services:
       [
         "/bin/sh",
         "-c",
-        "ngrok start --authtoken $NGROK_TOKEN --config /etc/ngrok.yml --all",
+        "sed -i \"s/\\${NGROK_HOSTNAME}/$NGROK_HOSTNAME/g\" /etc/ngrok.yml && ngrok start --authtoken $NGROK_TOKEN --config /etc/ngrok.yml --all",
       ]
     networks:
       prestashop:
