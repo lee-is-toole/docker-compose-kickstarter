@@ -31,7 +31,7 @@ services:
       - NGROK_TOKEN=$NGROK_TOKEN
       - NGROK_HOSTNAME=$NGROK_HOSTNAME
     volumes:
-      - ./ngrok/ngrok.yml:/etc/ngrok.yml:ro
+      - ./ngrok/ngrok.yml:/etc/ngrok.yml:rw
     entrypoint:
       [
         "/bin/sh",
