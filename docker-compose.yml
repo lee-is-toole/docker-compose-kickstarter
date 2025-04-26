@@ -3,6 +3,9 @@ services:
     image: prestashop/prestashop:${DOCKER_PRESTASHOP_VERSION:-8.0.0-apache}
     env_file:
       - ./prestashop/prestashop.env
+    environment:
+      - ADMIN_MAIL=${ADMIN_MAIL:-admin@example.com}
+      - ADMIN_PASSWD=${ADMIN_PASSWD:-yourpassword}
     healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:80 || exit 1"]
       interval: 30s
@@ -26,6 +29,7 @@ services:
     environment:
       - NGROK_CONFIG=/etc/ngrok.yml
       - NGROK_TOKEN=$NGROK_TOKEN
+      - NGROK_HOSTNAME=$NGROK_HOSTNAME
     volumes:
       - ./ngrok/ngrok.yml:/etc/ngrok.yml:ro
     entrypoint:
