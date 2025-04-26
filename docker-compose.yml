@@ -31,12 +31,12 @@ services:
       - NGROK_TOKEN=$NGROK_TOKEN
       - NGROK_HOSTNAME=$NGROK_HOSTNAME
     volumes:
-      - ./ngrok/ngrok.yml:/etc/ngrok.yml:rw
+      - ./ngrok/ngrok.yml:/ngrok.yml:rw
     entrypoint:
       [
         "/bin/sh",
         "-c",
-        "sed -i \"s/\\${NGROK_HOSTNAME}/$NGROK_HOSTNAME/g\" /etc/ngrok.yml && ngrok start --authtoken $NGROK_TOKEN --config /etc/ngrok.yml --all",
+        "sed -i \"s/\\${NGROK_HOSTNAME}/$NGROK_HOSTNAME/g\" /ngrok.yml && ngrok start --authtoken $NGROK_TOKEN --config /ngrok.yml --all",
       ]
     networks:
       prestashop:
